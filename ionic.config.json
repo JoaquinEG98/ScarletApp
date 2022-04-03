@@ -1,0 +1,7 @@
+{
+  "name": "ScarletApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
