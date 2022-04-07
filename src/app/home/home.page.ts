@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { AddNoteComponent } from '../add-note/add-note.component';
 import { INote } from '../models/nota.model';
+import { IResponse } from '../models/response.model';
 import { IUser } from '../models/user.model';
 import { HelperService } from '../services/helper.service';
 import { NoteService } from '../services/note.service';
@@ -44,13 +45,13 @@ export class HomePage {
   }
 
   public async GetNotes(userId: number){
-    await this.noteService.GetNotes(userId).subscribe(response =>{
+    await this.noteService.GetNotes(userId).subscribe(async (response: IResponse<INote[]>) =>{
       this.Notes = response.data;    
     });
   }
 
   public async FinishNote(noteId: number){
-    await this.noteService.FinishNote(noteId).subscribe(async response => {
+    await this.noteService.FinishNote(noteId).subscribe(async (response: IResponse<INote>) => {
       if (response.statusCode == 200){
         await this.GetNotes(this.User.id);
       }

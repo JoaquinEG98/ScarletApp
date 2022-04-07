@@ -16,19 +16,19 @@ export class NoteService {
     return this.http.post<IResponse<INote>>(environment.API_URL + 'note/addnote', note);
   }
 
-  public UpdateNote(noteId: number, note: INote): Observable<any>{
+  public UpdateNote(noteId: number, note: INote): Observable<IResponse<INote>>{
     return this.http.put<IResponse<INote>>(environment.API_URL + 'note/updatenote/' + noteId, note);
   }
 
-  public GetNote(noteId: number): Observable<any>{
+  public GetNote(noteId: number): Observable<IResponse<INote>>{
     return this.http.get<IResponse<INote>>(environment.API_URL + 'note/getnote/' + noteId);
   }
 
-  public GetNotes(userId: number): Observable<any>{
-    return this.http.get<IResponse<INote>>(environment.API_URL + 'note/getnotes/' + userId);
+  public GetNotes(userId: number): Observable<IResponse<INote[]>>{
+    return this.http.get<IResponse<INote[]>>(environment.API_URL + 'note/getnotes/' + userId);
   }
 
-  public FinishNote(noteId: number): Observable<any>{
+  public FinishNote(noteId: number): Observable<IResponse<INote>>{
     return this.http.put<IResponse<INote>>(environment.API_URL + 'note/finishnote/' + noteId, null);
   }
 

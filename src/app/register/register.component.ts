@@ -20,14 +20,14 @@ export class RegisterComponent implements OnInit {
         let name = document.getElementById('name') as HTMLInputElement;
         let lastname = document.getElementById('lastname') as HTMLInputElement;
         let password = document.getElementById('password') as HTMLInputElement;
-
+        
         let userRegister = {
           Email: email.value,
           Password: password.value,
           Name: name.value,
           Lastname: lastname.value
         }
-
+      
         await this.userService.AddUser(userRegister).subscribe(async response =>{
           if (response.statusCode == 200){
             this.toastService.PresentSuccess('Usuario registrado con éxito!');

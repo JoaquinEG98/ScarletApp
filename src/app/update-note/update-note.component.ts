@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { INote } from '../models/nota.model';
+import { IResponse } from '../models/response.model';
 import { IUser } from '../models/user.model';
 import { HelperService } from '../services/helper.service';
 import { NoteService } from '../services/note.service';
@@ -37,7 +38,7 @@ export class UpdateNoteComponent implements OnInit {
   }
 
   public async GetNote(noteId: number){
-    await this.noteService.GetNote(noteId).subscribe(response =>{
+    await this.noteService.GetNote(noteId).subscribe((response: IResponse<INote>) =>{
       this.Note = response.data;     
     });
   }
