@@ -1,20 +1,47 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-item lines="none">
+      <ion-label style="font-weight: 800;font-size: 3em;">
+        Notas
+        <p style="font-weight: 400;color: white ;">Hola, {{User?.name + ' ' + User?.lastname}}</p>
+      </ion-label>
+      <p style="font-weight: 400; color: white;" (click)="Logout()">Cerrar sesión</p>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card *ngFor="let item of Notes" class="ion-margin">
+
+    <ion-item>
+      <ion-label>{{item.description}}</ion-label>
+    </ion-item>
+
+
+    <ion-card-content>
+      <ion-label>Finaliza el {{item.finishDate | date: 'dd/MM/YYYY HH:mm'}}</ion-label>
+    </ion-card-content>
+
+    <ion-row>
+
+
+      <ion-item button (click)="UpdateNote(item.id)">
+        <ion-icon name="create-outline"></ion-icon>
+        <p>Modificar</p>
+      </ion-item>
+
+      <ion-item button (click)="FinishNote(item.id)">
+        <ion-icon name="checkmark-done-outline"></ion-icon>
+        <p>Finalizar</p>
+      </ion-item>
+    </ion-row>
+
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addNewNote()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

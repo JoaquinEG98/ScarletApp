@@ -1,0 +1,25 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar >
+    <ion-title>Modificar nota</ion-title>
+    <ion-icon name="close" slot="end" size="larger" class="ion-padding" (click)="dismiss()"></ion-icon>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content >
+  <ion-card class="ion-align-self-center" >
+    <ion-item> 
+      <ion-textarea name="note" type="text" id="noteDescription" [(ngModel)]="NoteDescription" [value]="Note?.description"></ion-textarea>
+   </ion-item>
+   
+   <ion-item>
+     <ion-icon name="calendar-outline"slot="start"></ion-icon>
+     <ion-label>Finalización</ion-label>
+     <ion-datetime displayFormat="D MMM YYYY H:mm" id="noteDate" [value]="Note?.finishDate"></ion-datetime>
+   </ion-item>
+ 
+   <ion-button class="ion-margin" expand="block" (click)="UpdateNote()">Modificar nota</ion-button>
+
+  </ion-card>
+ 
+</ion-content>
