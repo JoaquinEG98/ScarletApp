@@ -8,6 +8,7 @@ import { IUser } from '../models/user.model';
 import { HelperService } from '../services/helper.service';
 import { NoteService } from '../services/note.service';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
+import { TokenService } from '../services/token.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ import { UpdateNoteComponent } from '../update-note/update-note.component';
 })
 export class HomePage {
 
-  constructor(private modalControl: ModalController, private noteService: NoteService, private helperService: HelperService, private router: Router) {}
+  constructor(private modalControl: ModalController, private noteService: NoteService, private helperService: HelperService, private router: Router, private tokenService: TokenService) {}
 
   public TodayDate: Date;
   public Notes: INote[];
