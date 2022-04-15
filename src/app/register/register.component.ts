@@ -12,33 +12,33 @@ export class RegisterComponent implements OnInit {
 
   constructor(private router: Router, private userService: UserService, private toastService: ToastService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  async Register(){
-        // No está funcionando el ngmodel en este componente - revisar más adelante, por ahora lo hago así.
-        let email = document.getElementById('email') as HTMLInputElement;
-        let name = document.getElementById('name') as HTMLInputElement;
-        let lastname = document.getElementById('lastname') as HTMLInputElement;
-        let password = document.getElementById('password') as HTMLInputElement;
-        
-        let userRegister = {
-          Email: email.value,
-          Password: password.value,
-          Name: name.value,
-          Lastname: lastname.value
-        }
-      
-        await this.userService.AddUser(userRegister).subscribe(async response =>{
-          if (response.statusCode == 200){
-            this.toastService.PresentSuccess('Usuario registrado con éxito!');
-            this.router.navigateByUrl('');
-          }else{
-            this.toastService.PresentAlert(response.msg);
-          }
-        })    
+  async Register() {
+    // No está funcionando el ngmodel en este componente - revisar más adelante, por ahora lo hago así.
+    let email = document.getElementById('emailRegister') as HTMLInputElement;
+    let name = document.getElementById('nameRegister') as HTMLInputElement;
+    let lastname = document.getElementById('lastnameRegister') as HTMLInputElement;
+    let password = document.getElementById('passwordRegister') as HTMLInputElement;
+
+    let userRegister = {
+      Email: email.value,
+      Password: password.value,
+      Name: name.value,
+      Lastname: lastname.value
+    }
+
+    await this.userService.AddUser(userRegister).subscribe(async response => {
+      if (response.statusCode == 200) {
+        this.toastService.PresentSuccess('Usuario registrado con éxito!');
+        this.router.navigateByUrl('');
+      } else {
+        this.toastService.PresentAlert(response.msg);
+      }
+    })
   }
 
-  async RedirectLogin(){
+  async RedirectLogin() {
     this.router.navigateByUrl('');
   }
 }
